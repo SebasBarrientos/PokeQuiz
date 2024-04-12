@@ -1,0 +1,12 @@
+1.Encontre el bug de que si uno cliquea muy rapido, no me pasa los valores de rta correcta y por 
+lo tanto todas son incorrectas:
+1. Posible solicion: crear una promesa de las promesas
+
+
+
+
+2-Si el boton cliqueado es el que tiene como valor correcto, se pase el +1 al local. 
+Ahora el tema es como detectamos si el boton tenia ese valor... Capas un data set invertido, 
+cosa de que me devuelva si es true que me ejecute funcion "a" o "b"
+
+3-Hay que adaptar todo el codigo a js6

@@ -16,23 +16,7 @@ const game = () => {
 
   let chainPokemones = [];
   let rtaCorrecta;
-  const respuestasBtn = () => {
-    axios
-      .get(`https://pokeapi.co/api/v2/evolution-chain/${idPokemonSearched}`)
-      .then((res) => {
-        let pokemon1 = res.data.chain.species.name;
-        let pokemon2 = res.data.chain.evolves_to[0].species.name;
-        let pokemon3 = res.data.chain.evolves_to[0].evolves_to[0].species.name;
-        chainPokemones.push(pokemon1, pokemon2, pokemon3);
 
-        console.log(pokemon1);
-        console.log(pokemon2);
-        console.log(pokemon3);
-      })
-      .catch((err) => console.error(err));
-  };
-  respuestasBtn();
-  console.log(chainPokemones);
   const respuestaCorrecta = () => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${numero}`)
@@ -41,15 +25,34 @@ const game = () => {
         // let rtaCorrectaID = res.data.id;
 
         console.log("Respuesta Correcta", rtaCorrecta);
-        answer(chainPokemones, rtaCorrecta);
       })
       .catch((err) => console.error(err));
   };
   respuestaCorrecta();
+
+  const respuestasBtn = () => {
+    axios
+      .get(`https://pokeapi.co/api/v2/evolution-chain/${idPokemonSearched}`)
+      .then((res) => {
+        let pokemon1 = res.data.chain.species.name;
+        let pokemon2 = res.data.chain.evolves_to[0].species.name;
+        let pokemon3 = res.data.chain.evolves_to[0].evolves_to[0].species.name;
+        chainPokemones.push(pokemon1, pokemon2, pokemon3);
+        answer(chainPokemones, rtaCorrecta);
+        console.log(pokemon1);
+        console.log(pokemon2);
+        console.log(pokemon3);
+      })
+      .catch((err) => console.error(err));
+  };
+  respuestasBtn();
+  console.log(chainPokemones);
+
   //Hay que resolver como le paso el valor seleccionado
   //Me quede en answer. Estoy tratando de que aparezcan los botones
   function answer(chainPokemones, rtaCorrecta) {
     console.log(chainPokemones);
+    console.log("ANS ",rtaCorrecta);
     //Ver como conecto el dom y los botones aca!!
     chainPokemones.forEach((pokebutton) => {
       console.log(pokebutton);
