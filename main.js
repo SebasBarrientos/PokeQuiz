@@ -29,7 +29,7 @@ const game = () => {
       .catch((err) => console.error(err));
   };
   respuestaCorrecta();
-
+  
   const respuestasBtn = () => {
     axios
       .get(`https://pokeapi.co/api/v2/evolution-chain/${idPokemonSearched}`)
@@ -38,7 +38,7 @@ const game = () => {
         let pokemon2 = res.data.chain.evolves_to[0].species.name;
         let pokemon3 = res.data.chain.evolves_to[0].evolves_to[0].species.name;
         chainPokemones.push(pokemon1, pokemon2, pokemon3);
-        answer(chainPokemones, rtaCorrecta);
+        answersButtons(chainPokemones, rtaCorrecta);
         console.log(pokemon1);
         console.log(pokemon2);
         console.log(pokemon3);
@@ -50,9 +50,9 @@ const game = () => {
 
   //Hay que resolver como le paso el valor seleccionado
   //Me quede en answer. Estoy tratando de que aparezcan los botones
-  function answer(chainPokemones, rtaCorrecta) {
+  function answersButtons(chainPokemones, rtaCorrecta) {
     console.log(chainPokemones);
-    console.log("ANS ",rtaCorrecta);
+    console.log("ANS ", rtaCorrecta);
     //Ver como conecto el dom y los botones aca!!
     chainPokemones.forEach((pokebutton) => {
       console.log(pokebutton);
@@ -61,8 +61,12 @@ const game = () => {
 
       if (pokebutton == rtaCorrecta) {
         button.dataset.correct = true;
+        button.id = "correcto";
       }
-      button.addEventListener("click", selectAnswer);
+      button.addEventListener("click", () => {
+        selectAnswer(button.id);
+        console.log(button.id);
+      });
       answerButtonsElement.appendChild(button);
     });
 
@@ -73,11 +77,24 @@ const game = () => {
         button.classList.add("bg-danger");
       }
     }
-    function selectAnswer() {
+    function selectAnswer(answerSelected) {
       Array.from(answerButtonsElement.children).forEach((button) => {
         backGroundColorAns(button);
       });
+      console.log(answerSelected);
+      if (answerSelected != "") {
+        let puntuacion = Number(localStorage.getItem("Puntuacion"));
+        console.log(typeof puntuacion);
+        puntuacion += 1;
+        localStorage.setItem("Puntuacion", puntuacion);
+
+        console.log("SUMASTE UN PUNTO!");
+      }
     }
+    // function selectAnswer() {
+    //   Array.from(answerButtonsElement.children).forEach((button) => {
+    //     backGroundColorAns(button);
+    //   });
     pictures.innerHTML = `<img class="active" src="${fotoPokemon}" alt="pokemon">`;
     pictures.classList.remove("d-none");
   }
@@ -85,6 +102,7 @@ const game = () => {
 //en el click de next debo hacer un if que si el currentQuestionIndex = 9 se detenga y muestre el resultado
 function startGame() {
   startButton.classList.add("d-none");
+  //   localStorage.setItem("Puntuacion", '0')
   currentQuestionIndex = 0;
   game();
 }
@@ -95,3 +113,12 @@ function resetState() {
 }
 
 startButton.addEventListener("click", startGame);
+axios
+    .get(`https://pokeapi.co/api/v2/pokemon`)
+    .then((res) => {
+      let pokemones = res;
+      // let rtaCorrectaID = res.data.id;
+
+      console.log("Respuesta Pokemones", pokemones);
+    })
+    .catch((err) => console.error(err));
