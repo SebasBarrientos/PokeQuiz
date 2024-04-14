@@ -13,3 +13,4 @@ asignarles id en clases???? Solucion correcta, darle un id
 
 3-Hay que adaptar todo el codigo a js6
 
+Hace falta que este todo dentro de una funcion??
