@@ -46,6 +46,7 @@ function selectAnswer(answerSelected) {
     let puntuacion = Number(localStorage.getItem("Puntuacion"));
     // console.log(puntuacion);
     puntuacion += 1;
+    document.getElementById(`medal${currentQuestionIndex}`).classList.remove("blackImage")
     localStorage.setItem("Puntuacion", puntuacion);
     if (arrPokemonQuestion.length > currentQuestionIndex + 1) {
       nextButton.classList.remove("d-none");
@@ -130,7 +131,7 @@ const imgCharge = (arrPokemonQuestion) => {
     pictures.innerHTML += `<img class="active d-none" id= "img${imgID}" src="${fotoPokemon}" alt="pokemon">`;
     console.log(medals);
     console.log(linkMedals[imgID]);
-    medals.innerHTML += `<img class="active" id= "medal${imgID}" src="${linkMedals[imgID]}" alt="medal1">`;
+    medals.innerHTML += `<img class="active blackImage" id= "medal${imgID}" src="${linkMedals[imgID]}" alt="medal1">`;
 
     imgID += 1;
   });
@@ -167,7 +168,7 @@ const startGame = () => {
   currentQuestionIndex = 0;
   arrPokemonQuestion = [];
   resetState();
-
+  medals.innerHTML = ""
   obteniendoPokemons();
 };
 const resetState = () => {
