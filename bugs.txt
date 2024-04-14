@@ -13,15 +13,3 @@ asignarles id en clases???? Solucion correcta, darle un id
 
 3-Hay que adaptar todo el codigo a js6
 
-
-
-150 agregarle condicional al respuestasBtn... primero ver que devuelve si no existe y crear el condicional de que si
-eso ocurre de 1 nombre random de pokemon (o uno pre establecido)
-
-https://pokeapi.co/api/v2/pokemon/151 ARRAY de 3 y num random x3 para asignar 3 numeros. Despues a correct answer le
- doy 1 de los 3 y a la pag de img le doy el mismo (podria hacer una nueva variable y asignarle un random entre 1 y 3)
- esto haria que tenga la varible de botones con los nombre de los 3botones y una variable con un 
- variablebotones[random] la cual sera asignada a la rta y img!! y ya estaria la solucion 
- 
- PROBLEMA... La api solo me traeria 20, no todos. y sino tengo que llamarla 3 veces para rellenar los nombres.
- https://pokeapi.co/api/v2/pokemon?offset=0&limit=151 ESTO TRAE TODOSSSS
