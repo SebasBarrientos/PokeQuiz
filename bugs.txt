@@ -14,3 +14,5 @@ asignarles id en clases???? Solucion correcta, darle un id
 3-Hay que adaptar todo el codigo a js6
 
 Hace falta que este todo dentro de una funcion??
+
+img agregarlas todas a un array y que despues lo itero por index!!!
