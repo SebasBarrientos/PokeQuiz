@@ -46,12 +46,14 @@ function selectAnswer(answerSelected) {
     let puntuacion = Number(localStorage.getItem("Puntuacion"));
     // console.log(puntuacion);
     puntuacion += 1;
+    document.getElementById(`img${currentQuestionIndex}`).classList.remove("blackImage")
     document.getElementById(`medal${currentQuestionIndex}`).classList.remove("blackImage")
     localStorage.setItem("Puntuacion", puntuacion);
     if (arrPokemonQuestion.length > currentQuestionIndex + 1) {
       nextButton.classList.remove("d-none");
     } else {
       //EJECUTAR UNA FUNCION DE QUE TE MUESTRE LAS MEDALLAS Y TE DE UN MENSAJE
+      
       startButton.innerText = "Restart";
       pictures.innerHTML = "";
       startButton.classList.remove("d-none");
@@ -65,6 +67,8 @@ function selectAnswer(answerSelected) {
     // POSIBILIDAD DE AGREGAR EN UNA SOLA FUNCION
     if (arrPokemonQuestion.length > currentQuestionIndex + 1) {
       nextButton.classList.remove("d-none");
+    document.getElementById(`img${currentQuestionIndex}`).classList.remove("blackImage")
+
     } else {
       startButton.innerText = "Restart";
       pictures.innerHTML = "";
@@ -128,7 +132,7 @@ const imgCharge = (arrPokemonQuestion) => {
     let numberFormateado = numberImgQuestion.toString().padStart(3, "0"); //padStart rellena la cadena con "0" si el lenght es menor a 3
     const fotoPokemon = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${numberFormateado}.png`;
     // console.log(fotoPokemon);
-    pictures.innerHTML += `<img class="active d-none" id= "img${imgID}" src="${fotoPokemon}" alt="pokemon">`;
+    pictures.innerHTML += `<img class="active d-none blackImage" id= "img${imgID}" src="${fotoPokemon}" alt="pokemon">`;
     console.log(medals);
     console.log(linkMedals[imgID]);
     medals.innerHTML += `<img class="active blackImage" id= "medal${imgID}" src="${linkMedals[imgID]}" alt="medal1">`;
