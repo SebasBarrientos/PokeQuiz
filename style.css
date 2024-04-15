@@ -1,3 +1,15 @@
 .blackImage {
-    filter: brightness(0%);
-  }
+  filter: brightness(0%);
+}
+
+.badge-box {
+  background-color: #8C8C8C;
+  width: 300px;
+}
+
+.img-medal {
+  width: 18%;
+}
+.img-pokemon{
+  width: 320px;
+}
