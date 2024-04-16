@@ -15,11 +15,18 @@
     <div class="header d-flex justify-content-center bg-danger border border-4 border-dark">
         <h1>Pokemon Quiz</h1>
     </div>
+    <form id="formUser" class=" d-flex flex-column justify-content-center align-item-center p-3 bg-primary border border-4 border-dark">
+        <div class="mb-3 d-flex flex-column justify-content-center align-item-center">
+            <input type="text" class="form-control" id="nameUser" placeholder="User Name">
+        </div>
+        <button id="btnCreateUsers" type="button" class="btn btn-danger border-black">Submit</button>
+        <div id="btnUsers"></div>
+    </form>
     <div id="quest"
         class=" bg-primary d-flex d-none justify-content-center align-items-center border border-4 border-dark">
         <h2 class="text-warning border-bottom-3 border-black ">Who's that pokemon?</h2>
     </div>
-    <div class="bg-primary d-flex flex-wrap justify-content-center align-items-center py-2 border border-4 border-dark">
+    <div class="bg-primary d-flex flex-wrap justify-content-center align-items-center py-2 border border-4 border-dark d-none">
         <div class=" d-flex flex-column justify-content-center align-items-center">
 
             <div id="pictures" class="img-pokemon-size d-flex bg-light rounded-3"></div>

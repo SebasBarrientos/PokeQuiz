@@ -31,7 +31,8 @@ let rtaCorrecta;
 let pokemones = [];
 // console.log(number());
 const xSwitch = () => {
-  document.getElementById("medal"+currentQuestionIndex).src= "https://png.pngtree.com/png-clipart/20230527/original/pngtree-red-cross-paint-clipart-transparent-background-png-image_9171931.png"
+  document.getElementById("medal" + currentQuestionIndex).src =
+    "https://png.pngtree.com/png-clipart/20230527/original/pngtree-red-cross-paint-clipart-transparent-background-png-image_9171931.png";
 };
 const memeApears = () => {
   meme.classList.remove("d-none");
@@ -70,20 +71,18 @@ const selectAnswer = (answerSelected) => {
       nextButton.classList.remove("d-none");
     } else {
       //EJECUTAR UNA FUNCION DE QUE TE MUESTRE LAS MEDALLAS Y TE DE UN MENSAJE
-
+      //ACA IRIA EL PUSH DE PUNTUACION A PUNTUACION DE USER
       startButton.innerText = "Restart";
       pictures.innerHTML = "";
       startButton.classList.remove("d-none");
     }
   } else {
     // POSIBILIDAD DE AGREGAR EN UNA SOLA FUNCION
-    ////// AGREGAR POP DE MEME
     if (arrPokemonQuestion.length > currentQuestionIndex + 1) {
       memeApears();
-      setTimeout(memeDisapears, 2000);
+      setTimeout(memeDisapears, 500);
       nextButton.classList.remove("d-none");
       xSwitch();
-      //ACAAAA VA LA FUNCIONNNNN
       document
         .getElementById(`img${currentQuestionIndex}`)
         .classList.remove("blackImage");
@@ -99,7 +98,7 @@ const answersButtons = (chainPokemones, rtaCorrecta) => {
   // console.log("ANS ", rtaCorrecta);
   chainPokemones.forEach((pokebutton) => {
     const button = document.createElement("button");
-    button.innerText = pokebutton;
+    button.innerText = pokebutton.toUpperCase();
     button.classList.add("btn");
     button.classList.add("btn-warning");
     button.classList.add("m-1");
@@ -210,3 +209,47 @@ nextButton.addEventListener("click", () => {
   currentQuestionIndex++;
   setNextQuestion();
 });
+
+// AHORA ARRNACA EL TEMA DE USERS Y GRAFICAS
+const userName = document.getElementById("nameUser");
+const btnCreateUser = document.getElementById("btnCreateUsers");
+const btnUsers = document.getElementById("btnUsers");
+let player;
+
+const createUserOrSelect = (e) => {
+  e.preventDefault();
+  console.log(player);
+  if (player == "Puntuacion" || player === undefined) {
+    alert("Tu usuario no se puede llamar Puntuacion ni estar vacio");
+  } else if (localStorage.getItem(userName.value) == null) {
+    console.log("entro");
+    User = {
+      NameUser: userName.value,
+      Puntuacion: [],
+    };
+    localStorage.setItem(userName.value, JSON.stringify(User));
+    player = userName.value;
+  } else {
+    player = userName.value;
+    console.log(player);
+  }
+};
+const printUsers = () => {
+  let keys = Object.keys(localStorage);
+  keys.forEach((key) => {
+    const button = document.createElement("button");
+    button.innerText = key.toUpperCase();
+    button.classList.add("btn");
+    button.classList.add("btn-warning");
+    button.classList.add("m-1");
+    button.id =key;
+    button.addEventListener("click", () => {
+      selectAnswer(button.id);
+    });
+    btnUsers.appendChild(button);
+  });
+  console.log(keys);
+  btnUsers.addEventListener("click", startGame);
+};
+printUsers();
+btnCreateUser.addEventListener("click", createUserOrSelect);
