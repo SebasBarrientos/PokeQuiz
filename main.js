@@ -5,6 +5,7 @@ const answerButtonsElement = document.getElementById("answer-buttons");
 const pictures = document.getElementById("pictures");
 const medals = document.getElementById("medals");
 const quest = document.getElementById("quest");
+const meme = document.getElementById("meme");
 
 const linkMedals = [
   "https://static.wikia.nocookie.net/espokemon/images/3/39/Medalla_Roca.png",
@@ -29,15 +30,26 @@ let chainPokemones = [];
 let rtaCorrecta;
 let pokemones = [];
 // console.log(number());
+const xSwitch = () => {
+  document.getElementById("medal"+currentQuestionIndex).src= "https://png.pngtree.com/png-clipart/20230527/original/pngtree-red-cross-paint-clipart-transparent-background-png-image_9171931.png"
+};
+const memeApears = () => {
+  meme.classList.remove("d-none");
+  console.log("aparece");
+};
+const memeDisapears = () => {
+  console.log("pasaron 2 segs");
+  meme.classList.add("d-none");
+};
 
-const backGroundColorAns = (button)=> {
+const backGroundColorAns = (button) => {
   button.setAttribute("disabled", "");
   if (button.dataset.correct == "true") {
     button.classList.add("bg-success");
   } else {
     button.classList.add("bg-danger");
   }
-}
+};
 const selectAnswer = (answerSelected) => {
   Array.from(answerButtonsElement.children).forEach((button) => {
     backGroundColorAns(button);
@@ -47,14 +59,18 @@ const selectAnswer = (answerSelected) => {
     let puntuacion = Number(localStorage.getItem("Puntuacion"));
     // console.log(puntuacion);
     puntuacion += 1;
-    document.getElementById(`img${currentQuestionIndex}`).classList.remove("blackImage")
-    document.getElementById(`medal${currentQuestionIndex}`).classList.remove("blackImage")
+    document
+      .getElementById(`img${currentQuestionIndex}`)
+      .classList.remove("blackImage");
+    document
+      .getElementById(`medal${currentQuestionIndex}`)
+      .classList.remove("blackImage");
     localStorage.setItem("Puntuacion", puntuacion);
     if (arrPokemonQuestion.length > currentQuestionIndex + 1) {
       nextButton.classList.remove("d-none");
     } else {
       //EJECUTAR UNA FUNCION DE QUE TE MUESTRE LAS MEDALLAS Y TE DE UN MENSAJE
-      
+
       startButton.innerText = "Restart";
       pictures.innerHTML = "";
       startButton.classList.remove("d-none");
@@ -63,9 +79,14 @@ const selectAnswer = (answerSelected) => {
     // POSIBILIDAD DE AGREGAR EN UNA SOLA FUNCION
     ////// AGREGAR POP DE MEME
     if (arrPokemonQuestion.length > currentQuestionIndex + 1) {
+      memeApears();
+      setTimeout(memeDisapears, 2000);
       nextButton.classList.remove("d-none");
-    document.getElementById(`img${currentQuestionIndex}`).classList.remove("blackImage")
-
+      xSwitch();
+      //ACAAAA VA LA FUNCIONNNNN
+      document
+        .getElementById(`img${currentQuestionIndex}`)
+        .classList.remove("blackImage");
     } else {
       startButton.innerText = "Restart";
       pictures.innerHTML = "";
@@ -73,15 +94,15 @@ const selectAnswer = (answerSelected) => {
       startButton.classList.remove("d-none");
     }
   }
-}
+};
 const answersButtons = (chainPokemones, rtaCorrecta) => {
-  console.log("ANS ", rtaCorrecta);
+  // console.log("ANS ", rtaCorrecta);
   chainPokemones.forEach((pokebutton) => {
     const button = document.createElement("button");
     button.innerText = pokebutton;
-    button.classList.add("btn")
-    button.classList.add("btn-warning")
-    button.classList.add("m-1")
+    button.classList.add("btn");
+    button.classList.add("btn-warning");
+    button.classList.add("m-1");
     if (pokebutton == rtaCorrecta) {
       button.dataset.correct = true;
       button.id = "correcto";
@@ -122,9 +143,9 @@ const imgCharge = (arrPokemonQuestion) => {
     const fotoPokemon = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${numberFormateado}.png`;
     // console.log(fotoPokemon);
     pictures.innerHTML += `<img class="active d-none blackImage img-pokemon" id= "img${imgID}" src="${fotoPokemon}" alt="pokemon">`;
-    console.log(medals);
-    console.log(linkMedals[imgID]);
-    medals.innerHTML += `<img class="active blackImage gap-4 m-2 img-medal p-1 border border-black border-3" id= "medal${imgID}" src="${linkMedals[imgID]}" alt="medal1">`;
+    // console.log(medals);
+    // console.log(linkMedals[imgID]);
+    medals.innerHTML += `<img class="active blackImage gap-4 m-2 img-medal p-1 border border-black border-3" id= "medal${imgID}" src="${linkMedals[imgID]}" alt="medal">`;
 
     imgID += 1;
   });
@@ -161,7 +182,7 @@ const startGame = () => {
   currentQuestionIndex = 0;
   arrPokemonQuestion = [];
   resetState();
-  medals.innerHTML = ""
+  medals.innerHTML = "";
   obteniendoPokemons();
 };
 const resetState = () => {
@@ -170,7 +191,7 @@ const resetState = () => {
   chainPokemones = [];
 };
 const mostrarOcultarImgId = (currentQuestionIndex) => {
-  console.log(currentQuestionIndex);
+  // console.log(currentQuestionIndex);
   let lastImg = currentQuestionIndex - 1;
   document.getElementById(`img${lastImg}`).classList.add("d-none");
   document

@@ -15,13 +15,14 @@
     <div class="header d-flex justify-content-center bg-danger border border-4 border-dark">
         <h1>Pokemon Quiz</h1>
     </div>
-    <div id="quest" class=" bg-primary d-flex d-none justify-content-center align-items-center border border-4 border-dark">
+    <div id="quest"
+        class=" bg-primary d-flex d-none justify-content-center align-items-center border border-4 border-dark">
         <h2 class="text-warning border-bottom-3 border-black ">Who's that pokemon?</h2>
     </div>
     <div class="bg-primary d-flex flex-wrap justify-content-center align-items-center py-2 border border-4 border-dark">
         <div class=" d-flex flex-column justify-content-center align-items-center">
 
-                <div id="pictures" class="img-pokemon-size d-flex bg-light rounded-3"></div>
+            <div id="pictures" class="img-pokemon-size d-flex bg-light rounded-3"></div>
 
 
 
@@ -42,10 +43,12 @@
 
             </div>
         </div>
-
+        <div class="d-flex justify-content-end"><img id="meme" class="rounded-4 d-none"
+                src="data:image/jpeg;base64,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"
+                alt="meme"></div>
     </div>
     <footer class="bg-danger  border-start-4 border-dark">
-        <p>Sebastian Barrientos</p>
+        <p>Página diseñada por Sebastian Barrientos</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
