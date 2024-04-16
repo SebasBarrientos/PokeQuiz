@@ -6,7 +6,11 @@ const pictures = document.getElementById("pictures");
 const medals = document.getElementById("medals");
 const quest = document.getElementById("quest");
 const meme = document.getElementById("meme");
-
+const userName = document.getElementById("nameUser");
+const btnCreateUser = document.getElementById("btnCreateUsers");
+const btnUsers = document.getElementById("btnUsers");
+const formUser = document.getElementById("formUser");
+const game = document.getElementById("game");
 const linkMedals = [
   "https://static.wikia.nocookie.net/espokemon/images/3/39/Medalla_Roca.png",
   "https://static.wikia.nocookie.net/espokemon/images/6/60/Medalla_Cascada.png",
@@ -21,6 +25,7 @@ const linkMedals = [
 ];
 let currentQuestionIndex = 0;
 let arrPokemonQuestion = [];
+let player;
 
 const number = () => {
   let number = Math.floor(Math.random() * 151 + 1);
@@ -164,6 +169,7 @@ const arrPokemonQuestionFiller = (pokemones) => {
 };
 
 const obteniendoPokemons = () => {
+  console.log("obteniendo pokemones");
   axios
     .get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=151`)
     .then((res) => {
@@ -174,13 +180,15 @@ const obteniendoPokemons = () => {
 };
 
 //en el click de next debo hacer un if que si el currentQuestionIndex = 9 se detenga y muestre el resultado
-const startGame = () => {
+const startGame = (e) => {
+  resetState();
   startButton.classList.add("d-none");
+  formUser.classList.add("d-none");
   quest.classList.remove("d-none");
+  game.classList.remove("d-none");
   localStorage.setItem("Puntuacion", "0");
   currentQuestionIndex = 0;
   arrPokemonQuestion = [];
-  resetState();
   medals.innerHTML = "";
   obteniendoPokemons();
 };
@@ -211,15 +219,15 @@ nextButton.addEventListener("click", () => {
 });
 
 // AHORA ARRNACA EL TEMA DE USERS Y GRAFICAS
-const userName = document.getElementById("nameUser");
-const btnCreateUser = document.getElementById("btnCreateUsers");
-const btnUsers = document.getElementById("btnUsers");
-let player;
 
 const createUserOrSelect = (e) => {
-  e.preventDefault();
   console.log(player);
-  if (player == "Puntuacion" || player === undefined) {
+
+  if (
+    userName.value === undefined ||
+    userName.value == "Puntuacion" ||
+    userName.value === ""
+  ) {
     alert("Tu usuario no se puede llamar Puntuacion ni estar vacio");
   } else if (localStorage.getItem(userName.value) == null) {
     console.log("entro");
@@ -229,27 +237,28 @@ const createUserOrSelect = (e) => {
     };
     localStorage.setItem(userName.value, JSON.stringify(User));
     player = userName.value;
+    startGame();
   } else {
     player = userName.value;
     console.log(player);
+    startGame();
   }
+  console.log(player);
 };
 const printUsers = () => {
   let keys = Object.keys(localStorage);
   keys.forEach((key) => {
-    const button = document.createElement("button");
-    button.innerText = key.toUpperCase();
-    button.classList.add("btn");
-    button.classList.add("btn-warning");
-    button.classList.add("m-1");
-    button.id =key;
-    button.addEventListener("click", () => {
-      selectAnswer(button.id);
-    });
-    btnUsers.appendChild(button);
+    if (key != "Puntuacion") {
+      const button = document.createElement("button");
+      button.innerText = key.toUpperCase();
+      button.classList.add("btn");
+      button.classList.add("btn-warning");
+      button.classList.add("m-1");
+      button.id = key;
+      button.addEventListener("click", () => startGame(button.id));
+      btnUsers.appendChild(button);
+    }
   });
-  console.log(keys);
-  btnUsers.addEventListener("click", startGame);
 };
 printUsers();
 btnCreateUser.addEventListener("click", createUserOrSelect);
