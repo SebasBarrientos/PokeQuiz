@@ -25,7 +25,7 @@ const linkMedals = [
 ];
 let currentQuestionIndex = 0;
 let arrPokemonQuestion = [];
-let player;
+let player = "";
 
 const number = () => {
   let number = Math.floor(Math.random() * 151 + 1);
@@ -56,6 +56,13 @@ const backGroundColorAns = (button) => {
     button.classList.add("bg-danger");
   }
 };
+const endGame = ()=>{
+  startButton.innerText = "Restart";
+  let playerPunctuation = JSON.parse(localStorage.getItem(player));
+  console.log(playerPunctuation);
+  pictures.innerHTML = "";
+  startButton.classList.remove("d-none");
+}
 const selectAnswer = (answerSelected) => {
   Array.from(answerButtonsElement.children).forEach((button) => {
     backGroundColorAns(button);
@@ -64,6 +71,7 @@ const selectAnswer = (answerSelected) => {
   if (answerSelected != "") {
     let puntuacion = Number(localStorage.getItem("Puntuacion"));
     // console.log(puntuacion);
+    console.log(player);
     puntuacion += 1;
     document
       .getElementById(`img${currentQuestionIndex}`)
@@ -75,11 +83,13 @@ const selectAnswer = (answerSelected) => {
     if (arrPokemonQuestion.length > currentQuestionIndex + 1) {
       nextButton.classList.remove("d-none");
     } else {
+      endGame()
+
+
+
       //EJECUTAR UNA FUNCION DE QUE TE MUESTRE LAS MEDALLAS Y TE DE UN MENSAJE
       //ACA IRIA EL PUSH DE PUNTUACION A PUNTUACION DE USER
-      startButton.innerText = "Restart";
-      pictures.innerHTML = "";
-      startButton.classList.remove("d-none");
+
     }
   } else {
     // POSIBILIDAD DE AGREGAR EN UNA SOLA FUNCION
@@ -92,10 +102,7 @@ const selectAnswer = (answerSelected) => {
         .getElementById(`img${currentQuestionIndex}`)
         .classList.remove("blackImage");
     } else {
-      startButton.innerText = "Restart";
-      pictures.innerHTML = "";
-      answerButtonsElement.innerHTML = "";
-      startButton.classList.remove("d-none");
+      endGame()
     }
   }
 };
@@ -178,9 +185,11 @@ const obteniendoPokemons = () => {
     })
     .catch((err) => console.error(err));
 };
+const chargingPlayer = (playerr) => (player = playerr);
 
 //en el click de next debo hacer un if que si el currentQuestionIndex = 9 se detenga y muestre el resultado
-const startGame = (e) => {
+const startGame = (player) => {
+  chargingPlayer(player);
   resetState();
   startButton.classList.add("d-none");
   formUser.classList.add("d-none");
@@ -190,6 +199,7 @@ const startGame = (e) => {
   currentQuestionIndex = 0;
   arrPokemonQuestion = [];
   medals.innerHTML = "";
+  console.log(player);
   obteniendoPokemons();
 };
 const resetState = () => {
@@ -212,38 +222,33 @@ function setNextQuestion() {
   pokemonCorrect(pokemones, arrPokemonQuestion);
 }
 
-startButton.addEventListener("click", startGame);
+startButton.addEventListener("click", () => {
+  startGame(player);
+});
 nextButton.addEventListener("click", () => {
   currentQuestionIndex++;
   setNextQuestion();
 });
 
 // AHORA ARRNACA EL TEMA DE USERS Y GRAFICAS
-
-const createUserOrSelect = (e) => {
-  console.log(player);
-
+const createUserOrSelect = () => {
   if (
     userName.value === undefined ||
     userName.value == "Puntuacion" ||
     userName.value === ""
   ) {
     alert("Tu usuario no se puede llamar Puntuacion ni estar vacio");
+    // userName.innerText = "" //RESOLVER XQ NO FUNCIONA
   } else if (localStorage.getItem(userName.value) == null) {
-    console.log("entro");
     User = {
       NameUser: userName.value,
       Puntuacion: [],
     };
     localStorage.setItem(userName.value, JSON.stringify(User));
-    player = userName.value;
-    startGame();
+    startGame(userName.value);
   } else {
-    player = userName.value;
-    console.log(player);
-    startGame();
+    startGame(userName.value);
   }
-  console.log(player);
 };
 const printUsers = () => {
   let keys = Object.keys(localStorage);
