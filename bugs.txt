@@ -1,15 +1,9 @@
-1.Encontre el bug de que si uno cliquea muy rapido, no me pasa los valores de rta correcta y por 
-lo tanto todas son incorrectas:
-1. Posible solicion: crear una promesa de las promesas. 
 
 
 
 
-2-Si el boton cliqueado es el que tiene como valor correcto, se pase el +1 al local. 
-Ahora el tema es como detectamos si el boton tenia ese valor... Capas un data set invertido, 
-cosa de que me devuelva si es true que me ejecute funcion "a" o "b".
-Para recuperar el valor podria darle atributos a los botones para que se diferencien de alguna forma???
-asignarles id en clases???? Solucion correcta, darle un id
+
+
 
 3-Hay que adaptar todo el codigo a js6
 
@@ -18,4 +12,5 @@ Hace falta que este todo dentro de una funcion??
 img agregarlas todas a un array y que despues lo itero por index!!!
 
 
-Agregar meme cuando uno falla
+Agregar boton de eliminar user
+Agregar boton de volver a select user

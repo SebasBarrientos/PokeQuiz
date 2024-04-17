@@ -56,14 +56,27 @@ const backGroundColorAns = (button) => {
     button.classList.add("bg-danger");
   }
 };
-const endGame = ()=>{
-  startButton.innerText = "Restart";
+const cargarPuntaje = () => {
+  let puntuacion = Number(localStorage.getItem("Puntuacion"));
   let playerPunctuation = JSON.parse(localStorage.getItem(player));
+  playerPunctuation.score.push(puntuacion);
+  localStorage.setItem(player, JSON.stringify(playerPunctuation));
   console.log(playerPunctuation);
+};
+
+const endGame = () => {
+  startButton.innerText = "Restart";
   pictures.innerHTML = "";
   startButton.classList.remove("d-none");
-}
+  startButton.setAttribute("disabled", "");
+  setTimeout(() => {
+    answerButtonsElement.classList.add("d-none");
+    startButton.removeAttribute("disabled", "");
+  }, 1000);
+  cargarPuntaje();
+};
 const selectAnswer = (answerSelected) => {
+  console.log(answerSelected);
   Array.from(answerButtonsElement.children).forEach((button) => {
     backGroundColorAns(button);
   });
@@ -83,26 +96,24 @@ const selectAnswer = (answerSelected) => {
     if (arrPokemonQuestion.length > currentQuestionIndex + 1) {
       nextButton.classList.remove("d-none");
     } else {
-      endGame()
-
-
+      endGame();
 
       //EJECUTAR UNA FUNCION DE QUE TE MUESTRE LAS MEDALLAS Y TE DE UN MENSAJE
       //ACA IRIA EL PUSH DE PUNTUACION A PUNTUACION DE USER
-
     }
   } else {
     // POSIBILIDAD DE AGREGAR EN UNA SOLA FUNCION
     if (arrPokemonQuestion.length > currentQuestionIndex + 1) {
       memeApears();
-      setTimeout(memeDisapears, 500);
+      setTimeout(memeDisapears, 1500);
       nextButton.classList.remove("d-none");
       xSwitch();
       document
         .getElementById(`img${currentQuestionIndex}`)
         .classList.remove("blackImage");
     } else {
-      endGame()
+      xSwitch();
+      endGame();
     }
   }
 };
@@ -111,9 +122,7 @@ const answersButtons = (chainPokemones, rtaCorrecta) => {
   chainPokemones.forEach((pokebutton) => {
     const button = document.createElement("button");
     button.innerText = pokebutton.toUpperCase();
-    button.classList.add("btn");
-    button.classList.add("btn-warning");
-    button.classList.add("m-1");
+    button.classList.add("btn", "btn-warning", "m-1");
     if (pokebutton == rtaCorrecta) {
       button.dataset.correct = true;
       button.id = "correcto";
@@ -191,9 +200,8 @@ const chargingPlayer = (playerr) => (player = playerr);
 const startGame = (player) => {
   chargingPlayer(player);
   resetState();
-  startButton.classList.add("d-none");
-  formUser.classList.add("d-none");
   quest.classList.remove("d-none");
+  answerButtonsElement.classList.remove("d-none");
   game.classList.remove("d-none");
   localStorage.setItem("Puntuacion", "0");
   currentQuestionIndex = 0;
@@ -204,6 +212,9 @@ const startGame = (player) => {
 };
 const resetState = () => {
   nextButton.classList.add("d-none");
+  formUser.classList.add("d-none");
+
+  startButton.classList.add("d-none");
   answerButtonsElement.innerHTML = "";
   chainPokemones = [];
 };
@@ -241,8 +252,8 @@ const createUserOrSelect = () => {
     // userName.innerText = "" //RESOLVER XQ NO FUNCIONA
   } else if (localStorage.getItem(userName.value) == null) {
     User = {
-      NameUser: userName.value,
-      Puntuacion: [],
+      nameUser: userName.value,
+      score: [],
     };
     localStorage.setItem(userName.value, JSON.stringify(User));
     startGame(userName.value);
@@ -267,3 +278,121 @@ const printUsers = () => {
 };
 printUsers();
 btnCreateUser.addEventListener("click", createUserOrSelect);
+
+// const labels = Object.keys(localStorage);
+// // const ChartsUsers = () => {
+// //   let keys = Object.keys(localStorage);
+// //   keys.forEach((key) => labels.push(key));
+// // };
+// const user1 = labels[0]
+// console.log(user1);
+// const data = {
+//   users: "Pedro",
+//   datasets: [
+//     {
+//       label: "Tu nivel de maetria pokemon",
+//       backgroundColor: 'rgb(255, 99, 132)',
+//       borderColor: 'rgb(255, 99, 132)',
+//       data: [20],
+//     },
+//   ],
+// };
+
+// const config = {
+//   type: "line",
+//   data: data,
+//   options: {},
+// };
+
+// const myChart = new Chart("myChart", config);
+const labels = [];
+const valores = [];
+const chartValuesFilter = () => {
+  let keys = Object.keys(localStorage);
+  keys.forEach((key) => {
+    console.log(key);
+    if (key != "Puntuacion") {
+      labels.push(key);
+    }
+  });
+};
+chartValuesFilter();
+const obteniendoPromedios = () => {
+  let keys = Object.keys(localStorage);
+  keys.forEach((key) => {
+    if (key != "Puntuacion") {
+      let playerPunctuation = JSON.parse(localStorage.getItem(key));
+      console.log(playerPunctuation.score);
+
+      let arrPrimedio = playerPunctuation.score;
+      const sum = arrPrimedio.reduce((a, b) => a + b);
+      console.log(sum);
+      valores.push(sum / arrPrimedio.length);
+      console.log(valores);
+    }
+    // Number(localStorage.getItem("Puntuacion"));
+  });
+};
+obteniendoPromedios();
+console.log(valores);
+const data = {
+  labels: labels,
+  datasets: [
+    {
+      label: "Pokemasters",
+      backgroundColor: "white",
+      borderColor: "black",
+      data: valores,
+    },
+  ],
+};
+
+const config = {
+  type: "bar",
+  data: data,
+  options: {
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            size: 30, // Cambia este valor al tamaño deseado
+            weight: "bolder", // Opcional, puedes quitarlo si no necesitas negrita
+          },
+          color: "black",
+        },
+      },
+      y: {
+        ticks: {
+          font: {
+            size: 20, // Cambia este valor al tamaño deseado
+            weight: "bolder", // Opcional, puedes quitarlo si no necesitas negrita
+          },
+          color: "black",
+        },
+      },
+    },
+    bodyFont: { weight: "bolder" },
+    borderWidth: 2,
+    borderColor: "black",
+    backgroundColor: "#FFB1C1",
+    plugins: {
+      legend: {
+        labels: {
+          // Esta configuración es para la leyenda, no para las etiquetas de los ejes
+          footer: {
+            size: 20,
+            weight: "bolder",
+          },
+          font: {
+            size: 20,
+            weight: "bolder",
+          },
+          color: "black",
+        },
+      },
+    },
+  },
+};
+
+const myChart = new Chart("myChart", config);
+const myChart2 = new Chart("myChart2", config);
