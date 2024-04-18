@@ -388,7 +388,6 @@ const printUsers = () => {
   });
 };
 printUsers();
-console.log(document.getElementById("myChart").getAttribute("width"));
 btnCreateUser.addEventListener("click", createUserOrSelect);
 charts.classList.add("d-none");
 if (document.getElementById("myChart").getAttribute("width") == 0) {
