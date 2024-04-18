@@ -9,6 +9,7 @@ const meme = document.getElementById("meme");
 const userName = document.getElementById("nameUser");
 const btnCreateUser = document.getElementById("btnCreateUsers");
 const btnUsers = document.getElementById("btnUsers");
+const btnDeleteUsers = document.getElementById("btnDeleteUsers");
 const formUser = document.getElementById("formUser");
 const game = document.getElementById("game");
 const charts = document.getElementById("charts");
@@ -121,6 +122,7 @@ const config = {
   },
 };
 let myChart = new Chart("myChart", config);
+
 const updateCharts = (myChart) => {
   obteniendoPromedios();
   chartValuesFilter();
@@ -131,7 +133,6 @@ const updateCharts = (myChart) => {
   valores = [];
 };
 
-const myChart2 = new Chart("myChart2", config);
 const xSwitch = () => {
   document.getElementById("medal" + currentQuestionIndex).src =
     "https://png.pngtree.com/png-clipart/20230527/original/pngtree-red-cross-paint-clipart-transparent-background-png-image_9171931.png";
@@ -171,7 +172,7 @@ const endGame = () => {
     quest.classList.add("d-none");
     startButton.removeAttribute("disabled", "");
     medals.classList.add("d-none");
-    charts.classList.remove("invisible");
+    charts.classList.remove("d-none");
   }, 3000);
 };
 const selectAnswer = (answerSelected) => {
@@ -296,7 +297,7 @@ const startGame = (player) => {
 const resetState = () => {
   nextButton.classList.add("d-none");
   formUser.classList.add("d-none");
-  charts.classList.add("invisible");
+  charts.classList.add("d-none");
   startButton.classList.add("d-none");
   answerButtonsElement.innerHTML = "";
   chainPokemones = [];
@@ -341,20 +342,42 @@ const createUserOrSelect = () => {
     startGame(userName.value);
   }
 };
+
+const deleteUser = (user) => {
+  localStorage.removeItem(user);
+  btnUsers.innerHTML = "";
+  btnDeleteUsers.innerHTML = "";
+  printUsers();
+};
 const printUsers = () => {
   let keys = Object.keys(localStorage);
   keys.forEach((key) => {
     if (key != "Puntuacion") {
       const button = document.createElement("button");
       button.innerText = key.toUpperCase();
-      button.classList.add("btn");
-      button.classList.add("btn-warning");
-      button.classList.add("m-1");
+      button.classList.add(
+        "btn",
+        "btn-warning",
+        "m-1",
+        "border",
+        "border-dark"
+      );
       button.id = key;
       button.addEventListener("click", () => startGame(button.id));
       btnUsers.appendChild(button);
     }
   });
+  keys.forEach((key) => {
+    if (key != "Puntuacion") {
+      const button = document.createElement("button");
+      button.innerText = "Delete " + key.toUpperCase();
+      button.classList.add("btn", "btn-danger", "m-1", "border", "border-dark");
+      button.id = key;
+      button.addEventListener("click", () => deleteUser(button.id));
+      btnDeleteUsers.appendChild(button);
+    }
+  });
 };
 printUsers();
 btnCreateUser.addEventListener("click", createUserOrSelect);
+charts.classList.add("d-none");

@@ -1,5 +1,4 @@
 
 
 
-Agregar boton de eliminar user
 Agregar boton de volver a select user
