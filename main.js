@@ -35,10 +35,9 @@ const number = () => {
 let chainPokemones = [];
 let rtaCorrecta;
 let pokemones = [];
-// console.log(number());
 
-const labels = [];
-const valores = [];
+let labels = [];
+let valores = [];
 const chartValuesFilter = () => {
   let keys = Object.keys(localStorage);
   keys.forEach((key) => {
@@ -52,14 +51,12 @@ const obteniendoPromedios = () => {
   keys.forEach((key) => {
     if (key != "Puntuacion") {
       let playerPunctuation = JSON.parse(localStorage.getItem(key));
-      console.log(playerPunctuation.score);
       if (playerPunctuation.score == "") {
         valores.push(0);
       } else {
         let arrPrimedio = playerPunctuation.score;
         const sum = arrPrimedio.reduce((a, b) => a + b);
         valores.push(sum / arrPrimedio.length);
-        console.log(valores);
       }
     }
     // Number(localStorage.getItem("Puntuacion"));
@@ -129,8 +126,15 @@ let myChart = new Chart("myChart", config);
 const updateCharts = (myChart) => {
   obteniendoPromedios();
   chartValuesFilter();
+  console.log(labels);
+  console.log(valores);
+  console.log(data);
   myChart.data = data;
+  data.datasets[0].data = valores
+  console.log(data);
   myChart.update();
+  labels = [];
+  valores = [];
   // if (myChart) {
   //   myChart.destroy();
   // }
@@ -144,10 +148,8 @@ const xSwitch = () => {
 };
 const memeApears = () => {
   meme.classList.remove("d-none");
-  console.log("aparece");
 };
 const memeDisapears = () => {
-  console.log("pasaron 2 segs");
   meme.classList.add("d-none");
 };
 
@@ -164,7 +166,6 @@ const cargarPuntaje = () => {
   let playerPunctuation = JSON.parse(localStorage.getItem(player));
   playerPunctuation.score.push(puntuacion);
   localStorage.setItem(player, JSON.stringify(playerPunctuation));
-  console.log(playerPunctuation);
 };
 
 const endGame = () => {
@@ -180,19 +181,15 @@ const endGame = () => {
     quest.classList.add("d-none");
     startButton.removeAttribute("disabled", "");
     medals.classList.add("d-none");
-    charts.classList.remove("d-none");
+    charts.classList.remove("invisible");
   }, 3000);
 };
 const selectAnswer = (answerSelected) => {
-  console.log(answerSelected);
   Array.from(answerButtonsElement.children).forEach((button) => {
     backGroundColorAns(button);
   });
-  // console.log(answerSelected);
   if (answerSelected != "") {
     let puntuacion = Number(localStorage.getItem("Puntuacion"));
-    // console.log(puntuacion);
-    console.log(player);
     puntuacion += 1;
     document
       .getElementById(`img${currentQuestionIndex}`)
@@ -226,7 +223,6 @@ const selectAnswer = (answerSelected) => {
   }
 };
 const answersButtons = (chainPokemones, rtaCorrecta) => {
-  // console.log("ANS ", rtaCorrecta);
   chainPokemones.forEach((pokebutton) => {
     const button = document.createElement("button");
     button.innerText = pokebutton.toUpperCase();
@@ -269,10 +265,7 @@ const imgCharge = (arrPokemonQuestion) => {
   arrPokemonQuestion.forEach((numberImgQuestion) => {
     let numberFormateado = numberImgQuestion.toString().padStart(3, "0"); //padStart rellena la cadena con "0" si el lenght es menor a 3
     const fotoPokemon = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${numberFormateado}.png`;
-    // console.log(fotoPokemon);
     pictures.innerHTML += `<img class="active d-none blackImage img-pokemon" id= "img${imgID}" src="${fotoPokemon}" alt="pokemon">`;
-    // console.log(medals);
-    // console.log(linkMedals[imgID]);
     medals.innerHTML += `<img class="active blackImage gap-4 m-2 img-medal p-1 border border-black border-3" id= "medal${imgID}" src="${linkMedals[imgID]}" alt="medal">`;
 
     imgID += 1;
@@ -293,7 +286,6 @@ const arrPokemonQuestionFiller = (pokemones) => {
 };
 
 const obteniendoPokemons = () => {
-  console.log("obteniendo pokemones");
   axios
     .get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=151`)
     .then((res) => {
@@ -315,19 +307,17 @@ const startGame = (player) => {
   currentQuestionIndex = 9;
   arrPokemonQuestion = [];
   medals.innerHTML = "";
-  console.log(player);
   obteniendoPokemons();
 };
 const resetState = () => {
   nextButton.classList.add("d-none");
   formUser.classList.add("d-none");
-  charts.classList.add("d-none");
+  charts.classList.add("invisible");
   startButton.classList.add("d-none");
   answerButtonsElement.innerHTML = "";
   chainPokemones = [];
 };
 const mostrarOcultarImgId = (currentQuestionIndex) => {
-  // console.log(currentQuestionIndex);
   let lastImg = currentQuestionIndex - 1;
   document.getElementById(`img${lastImg}`).classList.add("d-none");
   document
