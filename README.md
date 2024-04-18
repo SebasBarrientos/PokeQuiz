@@ -1,7 +1,7 @@
 # Pokemasters Quiz Game
 
 ## Imagenes
-![Seleccion de usuario](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/abcab053-5f60-4fb1-99c9-eb511278293a)
+![Seleccion de usuario](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/f5af6a0b-996e-49ae-a167-97962388b7de)
 ![Creando Usuario](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/03850485-4947-41a9-811a-e5734390d67e)
 ![Comienzo de juego](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/fa3aa85e-daa2-4527-8d8e-5a92a4f62f72)
 ![Respuesta correcta](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/190711c6-3827-4fe0-91ae-4296b6cc0421)
