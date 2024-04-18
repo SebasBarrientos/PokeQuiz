@@ -11,6 +11,7 @@ const btnCreateUser = document.getElementById("btnCreateUsers");
 const btnUsers = document.getElementById("btnUsers");
 const formUser = document.getElementById("formUser");
 const game = document.getElementById("game");
+const charts = document.getElementById("charts");
 const linkMedals = [
   "https://static.wikia.nocookie.net/espokemon/images/3/39/Medalla_Roca.png",
   "https://static.wikia.nocookie.net/espokemon/images/6/60/Medalla_Cascada.png",
@@ -71,8 +72,11 @@ const endGame = () => {
   startButton.setAttribute("disabled", "");
   setTimeout(() => {
     answerButtonsElement.classList.add("d-none");
+    quest.classList.add("d-none");
     startButton.removeAttribute("disabled", "");
-  }, 1000);
+    medals.classList.add("d-none");
+    charts.classList.remove("d-none");
+  }, 3000);
   cargarPuntaje();
 };
 const selectAnswer = (answerSelected) => {
@@ -213,7 +217,7 @@ const startGame = (player) => {
 const resetState = () => {
   nextButton.classList.add("d-none");
   formUser.classList.add("d-none");
-
+  charts.classList.add("d-none");
   startButton.classList.add("d-none");
   answerButtonsElement.innerHTML = "";
   chainPokemones = [];
