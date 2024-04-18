@@ -304,7 +304,7 @@ const startGame = (player) => {
   answerButtonsElement.classList.remove("d-none");
   game.classList.remove("d-none");
   localStorage.setItem("Puntuacion", "0");
-  currentQuestionIndex = 9;
+  currentQuestionIndex = 0;
   arrPokemonQuestion = [];
   medals.innerHTML = "";
   obteniendoPokemons();
