@@ -43,8 +43,8 @@ let rtaCorrecta;
 let pokemones = [];
 
 let labels = [];
-let valores = [];
-const chartValuesFilter = () => {
+let values = [];
+const chartLabelFilter = () => {
   let keys = Object.keys(localStorage);
   keys.forEach((key) => {
     if (key != "Puntuacion") {
@@ -52,17 +52,17 @@ const chartValuesFilter = () => {
     }
   });
 };
-const obteniendoPromedios = () => {
+const averageScores = () => {
   let keys = Object.keys(localStorage);
   keys.forEach((key) => {
     if (key != "Puntuacion") {
       let playerPunctuation = JSON.parse(localStorage.getItem(key));
       if (playerPunctuation.score == "") {
-        valores.push(0);
+        values.push(0);
       } else {
-        let arrPrimedio = playerPunctuation.score;
-        const sum = arrPrimedio.reduce((a, b) => a + b);
-        valores.push(sum / arrPrimedio.length);
+        let arraverage = playerPunctuation.score;
+        const sum = arraverage.reduce((a, b) => a + b);
+        values.push(sum / arraverage.length);
       }
     }
   });
@@ -74,7 +74,7 @@ let data = {
       label: "Pokemasters",
       backgroundColor: "white",
       borderColor: "black",
-      data: valores,
+      data: values,
     },
   ],
 };
@@ -129,13 +129,13 @@ const config = {
 let myChart = new Chart("myChart", config);
 
 const updateCharts = (myChart) => {
-  obteniendoPromedios();
-  chartValuesFilter();
+  averageScores();
+  chartLabelFilter();
   myChart.data = data;
-  data.datasets[0].data = valores;
+  data.datasets[0].data = values;
   myChart.update();
   labels = [];
-  valores = [];
+  values = [];
 };
 
 const xSwitch = () => {
@@ -279,7 +279,7 @@ const arrPokemonQuestionFiller = (pokemones) => {
   }
 };
 
-const obteniendoPokemons = () => {
+const gettingPokemons = () => {
   axios
     .get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=151`)
     .then((res) => {
@@ -300,7 +300,7 @@ const startGame = (player) => {
   currentQuestionIndex = 0;
   arrPokemonQuestion = [];
   medals.innerHTML = "";
-  obteniendoPokemons();
+  gettingPokemons();
 };
 const resetState = () => {
   nextButton.classList.add("d-none");
@@ -391,5 +391,5 @@ printUsers();
 btnCreateUser.addEventListener("click", createUserOrSelect);
 charts.classList.add("d-none");
 if (document.getElementById("myChart").getAttribute("width") == 0) {
-  location.reload()
-}//Solucion al bug del chart. Que se actualice la pagina cuando no se cargue
+  location.reload();
+} //Solucion al bug del chart. Que se actualice la pagina cuando no se cargue
