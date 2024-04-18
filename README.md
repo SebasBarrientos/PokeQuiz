@@ -27,6 +27,7 @@ Chart of players´s score
 - Stores players' scores in the browser's local storage.
 - Displays Pokémon images and corresponding medals for questions.
 - Updates a chart with players' score averages.
+- Responsive page.
 
 ## Usage Instructions
 
@@ -80,6 +81,7 @@ Gráfico de puntuación de los jugadores
 - Almacena la puntuación de los jugadores en el local storage del navegador.
 - Muestra imágenes de Pokémon y cuantas medallas tiene el jugador.
 - Actualiza un gráfico con los promedios de puntuación de los jugadores.
+- La página es responsive.
 
 ## Instrucciones de Uso
 
