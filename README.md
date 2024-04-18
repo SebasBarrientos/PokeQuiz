@@ -1,19 +1,23 @@
 # Pokemasters Quiz Game
 
 ## Imagenes
-![Seleccion de usuario](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/f5af6a0b-996e-49ae-a167-97962388b7de)
-![Creando Usuario](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/03850485-4947-41a9-811a-e5734390d67e)
-![Comienzo de juego](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/fa3aa85e-daa2-4527-8d8e-5a92a4f62f72)
-![Respuesta correcta](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/190711c6-3827-4fe0-91ae-4296b6cc0421)
-![Intento Fallido](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/7333a570-1d37-4ee5-9fab-82c576ce2392)
+![Choose User](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/5792a9c7-7d09-4187-abbd-fdae326665d5)
+![Creating User](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/e305e6b8-e927-46b7-8104-2ee788a7ff39)
+![Game-Start](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/a982053a-21a6-49ef-8cab-dd45135d58d8)
+![Wright Answer](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/93468cb6-a542-4962-8872-ce9e2e3b2a69)
+![Wrong Answer](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/557fec24-e8e5-4341-af82-6dd45505af9f)
+![End-game](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/b8a3e31f-efa6-4499-846e-1b5ea5870203)
+![Chart of players](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/1efa490a-8e90-40f2-9541-4b913a4aa781)
+
 
 
 ## Description
 
-Pokemasters Quiz Game is a quiz game based on Pokémon, where players must identify the correct Pokémon among several options.
+Pokemasters Quiz Game is a quiz game based on Pokémon, where players must identify the name of the Pokémon in an image, among several options.
 
 ## Features
 
+- The page is an Single Page Aplication (SPA).
 - Uses the Pokeapi API to fetch Pokémon data.
 - Stores players' scores in the browser's local storage.
 - Displays Pokémon images and corresponding medals for questions.
@@ -49,6 +53,7 @@ Este es un juego de preguntas y respuestas sobre Pokémon, donde los jugadores d
 
 ## Características
 
+- La página es Single Page Aplication (SPA).
 - Utiliza la API de Pokeapi para obtener datos sobre Pokémon.
 - Almacena la puntuación de los jugadores en el local storage del navegador.
 - Muestra imágenes de Pokémon y cuantas medallas tiene el jugador.
