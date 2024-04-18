@@ -59,7 +59,6 @@ const obteniendoPromedios = () => {
         valores.push(sum / arrPrimedio.length);
       }
     }
-    // Number(localStorage.getItem("Puntuacion"));
   });
 };
 let data = {
@@ -82,8 +81,8 @@ const config = {
       x: {
         ticks: {
           font: {
-            size: 10, // Cambia este valor al tamaño deseado
-            weight: "bolder", // Opcional, puedes quitarlo si no necesitas negrita
+            size: 10,
+            weight: "bolder",
           },
           color: "black",
         },
@@ -93,8 +92,8 @@ const config = {
         max: 10,
         ticks: {
           font: {
-            size: 10, // Cambia este valor al tamaño deseado
-            weight: "bolder", // Opcional, puedes quitarlo si no necesitas negrita
+            size: 10,
+            weight: "bolder",
           },
           color: "black",
         },
@@ -107,7 +106,6 @@ const config = {
     plugins: {
       legend: {
         labels: {
-          // Esta configuración es para la leyenda, no para las etiquetas de los ejes
           footer: {
             size: 20,
             weight: "bolder",
@@ -126,19 +124,11 @@ let myChart = new Chart("myChart", config);
 const updateCharts = (myChart) => {
   obteniendoPromedios();
   chartValuesFilter();
-  console.log(labels);
-  console.log(valores);
-  console.log(data);
   myChart.data = data;
-  data.datasets[0].data = valores
-  console.log(data);
+  data.datasets[0].data = valores;
   myChart.update();
   labels = [];
   valores = [];
-  // if (myChart) {
-  //   myChart.destroy();
-  // }
-  // myChart = new Chart();
 };
 
 const myChart2 = new Chart("myChart2", config);
@@ -202,12 +192,8 @@ const selectAnswer = (answerSelected) => {
       nextButton.classList.remove("d-none");
     } else {
       endGame();
-
-      //EJECUTAR UNA FUNCION DE QUE TE MUESTRE LAS MEDALLAS Y TE DE UN MENSAJE
-      //ACA IRIA EL PUSH DE PUNTUACION A PUNTUACION DE USER
     }
   } else {
-    // POSIBILIDAD DE AGREGAR EN UNA SOLA FUNCION
     if (arrPokemonQuestion.length > currentQuestionIndex + 1) {
       memeApears();
       setTimeout(memeDisapears, 1500);
@@ -246,7 +232,7 @@ const pokeFalse = (pokemones, numeroPokemon) => {
     let pokemonFalse = pokemones[numberPokemonFalse - 1].name;
     chainPokemones.push(pokemonFalse);
     if (chainPokemones.length < 3) {
-      pokeFalse(pokemones, numeroPokemon); //COMO HAGO PARA QUE NO SEAN IGUALES LOS 2 FALSOS NOMBRES
+      pokeFalse(pokemones, numeroPokemon);
     } else if (chainPokemones.length == 3) {
       chainPokemones.sort();
       answersButtons(chainPokemones, rtaCorrecta);
@@ -279,7 +265,6 @@ const arrPokemonQuestionFiller = (pokemones) => {
     arrPokemonQuestion.push(number());
     arrPokemonQuestionFiller(pokemones);
   } else {
-    //EJECUTAR CARGA DE IMAGENES
     imgCharge(arrPokemonQuestion);
     pokemonCorrect(pokemones, arrPokemonQuestion);
   }
@@ -296,7 +281,6 @@ const obteniendoPokemons = () => {
 };
 const chargingPlayer = (playerr) => (player = playerr);
 
-//en el click de next debo hacer un if que si el currentQuestionIndex = 9 se detenga y muestre el resultado
 const startGame = (player) => {
   chargingPlayer(player);
   resetState();
@@ -339,7 +323,6 @@ nextButton.addEventListener("click", () => {
   setNextQuestion();
 });
 
-// AHORA ARRNACA EL TEMA DE USERS Y GRAFICAS
 const createUserOrSelect = () => {
   if (
     userName.value === undefined ||
@@ -347,7 +330,6 @@ const createUserOrSelect = () => {
     userName.value === ""
   ) {
     alert("Tu usuario no se puede llamar Puntuacion ni estar vacio");
-    // userName.innerText = "" //RESOLVER XQ NO FUNCIONA
   } else if (localStorage.getItem(userName.value) == null) {
     User = {
       nameUser: userName.value,
