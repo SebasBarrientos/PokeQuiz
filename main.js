@@ -36,6 +36,108 @@ let chainPokemones = [];
 let rtaCorrecta;
 let pokemones = [];
 // console.log(number());
+
+const labels = [];
+const valores = [];
+const chartValuesFilter = () => {
+  let keys = Object.keys(localStorage);
+  keys.forEach((key) => {
+    if (key != "Puntuacion") {
+      labels.push(key);
+    }
+  });
+};
+const obteniendoPromedios = () => {
+  let keys = Object.keys(localStorage);
+  keys.forEach((key) => {
+    if (key != "Puntuacion") {
+      let playerPunctuation = JSON.parse(localStorage.getItem(key));
+      console.log(playerPunctuation.score);
+      if (playerPunctuation.score == "") {
+        valores.push(0);
+      } else {
+        let arrPrimedio = playerPunctuation.score;
+        const sum = arrPrimedio.reduce((a, b) => a + b);
+        valores.push(sum / arrPrimedio.length);
+        console.log(valores);
+      }
+    }
+    // Number(localStorage.getItem("Puntuacion"));
+  });
+};
+let data = {
+  labels: labels,
+  datasets: [
+    {
+      label: "Pokemasters",
+      backgroundColor: "white",
+      borderColor: "black",
+      data: valores,
+    },
+  ],
+};
+
+const config = {
+  type: "bar",
+  data: data,
+  options: {
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            size: 10, // Cambia este valor al tamaño deseado
+            weight: "bolder", // Opcional, puedes quitarlo si no necesitas negrita
+          },
+          color: "black",
+        },
+      },
+      y: {
+        min: 0,
+        max: 10,
+        ticks: {
+          font: {
+            size: 10, // Cambia este valor al tamaño deseado
+            weight: "bolder", // Opcional, puedes quitarlo si no necesitas negrita
+          },
+          color: "black",
+        },
+      },
+    },
+    bodyFont: { weight: "bolder" },
+    borderWidth: 2,
+    borderColor: "black",
+    backgroundColor: "#FFB1C1",
+    plugins: {
+      legend: {
+        labels: {
+          // Esta configuración es para la leyenda, no para las etiquetas de los ejes
+          footer: {
+            size: 20,
+            weight: "bolder",
+          },
+          font: {
+            size: 20,
+            weight: "bolder",
+          },
+          color: "black",
+        },
+      },
+    },
+  },
+};
+let myChart = new Chart("myChart", config);
+const updateCharts = (myChart) => {
+  obteniendoPromedios();
+  chartValuesFilter();
+  myChart.data = data;
+  myChart.update();
+  // if (myChart) {
+  //   myChart.destroy();
+  // }
+  // myChart = new Chart();
+};
+
+const myChart2 = new Chart("myChart2", config);
 const xSwitch = () => {
   document.getElementById("medal" + currentQuestionIndex).src =
     "https://png.pngtree.com/png-clipart/20230527/original/pngtree-red-cross-paint-clipart-transparent-background-png-image_9171931.png";
@@ -70,6 +172,9 @@ const endGame = () => {
   pictures.innerHTML = "";
   startButton.classList.remove("d-none");
   startButton.setAttribute("disabled", "");
+  cargarPuntaje();
+
+  updateCharts(myChart);
   setTimeout(() => {
     answerButtonsElement.classList.add("d-none");
     quest.classList.add("d-none");
@@ -77,7 +182,6 @@ const endGame = () => {
     medals.classList.add("d-none");
     charts.classList.remove("d-none");
   }, 3000);
-  cargarPuntaje();
 };
 const selectAnswer = (answerSelected) => {
   console.log(answerSelected);
@@ -208,7 +312,7 @@ const startGame = (player) => {
   answerButtonsElement.classList.remove("d-none");
   game.classList.remove("d-none");
   localStorage.setItem("Puntuacion", "0");
-  currentQuestionIndex = 0;
+  currentQuestionIndex = 9;
   arrPokemonQuestion = [];
   medals.innerHTML = "";
   console.log(player);
@@ -282,121 +386,3 @@ const printUsers = () => {
 };
 printUsers();
 btnCreateUser.addEventListener("click", createUserOrSelect);
-
-// const labels = Object.keys(localStorage);
-// // const ChartsUsers = () => {
-// //   let keys = Object.keys(localStorage);
-// //   keys.forEach((key) => labels.push(key));
-// // };
-// const user1 = labels[0]
-// console.log(user1);
-// const data = {
-//   users: "Pedro",
-//   datasets: [
-//     {
-//       label: "Tu nivel de maetria pokemon",
-//       backgroundColor: 'rgb(255, 99, 132)',
-//       borderColor: 'rgb(255, 99, 132)',
-//       data: [20],
-//     },
-//   ],
-// };
-
-// const config = {
-//   type: "line",
-//   data: data,
-//   options: {},
-// };
-
-// const myChart = new Chart("myChart", config);
-const labels = [];
-const valores = [];
-const chartValuesFilter = () => {
-  let keys = Object.keys(localStorage);
-  keys.forEach((key) => {
-    console.log(key);
-    if (key != "Puntuacion") {
-      labels.push(key);
-    }
-  });
-};
-chartValuesFilter();
-const obteniendoPromedios = () => {
-  let keys = Object.keys(localStorage);
-  keys.forEach((key) => {
-    if (key != "Puntuacion") {
-      let playerPunctuation = JSON.parse(localStorage.getItem(key));
-      console.log(playerPunctuation.score);
-
-      let arrPrimedio = playerPunctuation.score;
-      const sum = arrPrimedio.reduce((a, b) => a + b);
-      console.log(sum);
-      valores.push(sum / arrPrimedio.length);
-      console.log(valores);
-    }
-    // Number(localStorage.getItem("Puntuacion"));
-  });
-};
-obteniendoPromedios();
-console.log(valores);
-const data = {
-  labels: labels,
-  datasets: [
-    {
-      label: "Pokemasters",
-      backgroundColor: "white",
-      borderColor: "black",
-      data: valores,
-    },
-  ],
-};
-
-const config = {
-  type: "bar",
-  data: data,
-  options: {
-    scales: {
-      x: {
-        ticks: {
-          font: {
-            size: 30, // Cambia este valor al tamaño deseado
-            weight: "bolder", // Opcional, puedes quitarlo si no necesitas negrita
-          },
-          color: "black",
-        },
-      },
-      y: {
-        ticks: {
-          font: {
-            size: 20, // Cambia este valor al tamaño deseado
-            weight: "bolder", // Opcional, puedes quitarlo si no necesitas negrita
-          },
-          color: "black",
-        },
-      },
-    },
-    bodyFont: { weight: "bolder" },
-    borderWidth: 2,
-    borderColor: "black",
-    backgroundColor: "#FFB1C1",
-    plugins: {
-      legend: {
-        labels: {
-          // Esta configuración es para la leyenda, no para las etiquetas de los ejes
-          footer: {
-            size: 20,
-            weight: "bolder",
-          },
-          font: {
-            size: 20,
-            weight: "bolder",
-          },
-          color: "black",
-        },
-      },
-    },
-  },
-};
-
-const myChart = new Chart("myChart", config);
-const myChart2 = new Chart("myChart2", config);
