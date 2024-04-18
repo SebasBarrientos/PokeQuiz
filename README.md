@@ -7,17 +7,17 @@ Pokemasters Quiz Game is a quiz game based on Pokémon, where players must ident
 ## Imagenes
 Choose User:
 ![Choose User](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/5792a9c7-7d09-4187-abbd-fdae326665d5)
-Creating User
+Creating User:
 ![Creating User](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/e305e6b8-e927-46b7-8104-2ee788a7ff39)
-Game-Start
+Game-Start:
 ![Game-Start](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/a982053a-21a6-49ef-8cab-dd45135d58d8)
-Wright Answer
+Wright Answer:
 ![Wright Answer](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/93468cb6-a542-4962-8872-ce9e2e3b2a69)
-Wrong Answer
+Wrong Answer:
 ![Wrong Answer](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/557fec24-e8e5-4341-af82-6dd45505af9f)
-End-game
+End-game:
 ![End-game](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/b8a3e31f-efa6-4499-846e-1b5ea5870203)
-Chart of players´s score
+Chart of players´s score:
 ![Chart of players](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/1efa490a-8e90-40f2-9541-4b913a4aa781)
 
 ## Features
@@ -31,7 +31,7 @@ Chart of players´s score
 
 ## Usage Instructions
 
-1. **Starting the Game**: Choose an existing user from the button options or type your user and click subit.
+1. **Starting the Game**: Choose an existing user from the button options or type your user and click submit.
 2. **Selecting Answers**: Multiple answer options are presented. The player must select the correct option to answer who´s that pokemon.
 3. **Game End**: The game ends after answering 10 questions. The score obtained is displayed with a badge box (for each correct answer you get a badge), and the score average chart is updated.
 4. **Restarting the Game**: To play again, simply press the "Restart" button.
@@ -60,17 +60,17 @@ Este es un juego de preguntas y respuestas sobre Pokémon, donde los jugadores d
 ## Imagenes
 Elegir usuario:
 ![Choose User](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/5792a9c7-7d09-4187-abbd-fdae326665d5)
-Crear usuario
+Crear usuario:
 ![Creating User](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/e305e6b8-e927-46b7-8104-2ee788a7ff39)
-Comienza juego
+Comienza juego:
 ![Game-Start](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/a982053a-21a6-49ef-8cab-dd45135d58d8)
-Respuesta correcta
+Respuesta correcta:
 ![Wright Answer](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/93468cb6-a542-4962-8872-ce9e2e3b2a69)
-Respuesta incorrecta
+Respuesta incorrecta:
 ![Wrong Answer](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/557fec24-e8e5-4341-af82-6dd45505af9f)
-Fin del juego
+Fin del juego:
 ![End-game](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/b8a3e31f-efa6-4499-846e-1b5ea5870203)
-Gráfico de puntuación de los jugadores
+Gráfico de puntuación de los jugadores:
 ![Chart of players](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/1efa490a-8e90-40f2-9541-4b913a4aa781)
 
 
