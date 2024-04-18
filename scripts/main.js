@@ -13,6 +13,7 @@ const btnDeleteUsers = document.getElementById("btnDeleteUsers");
 const formUser = document.getElementById("formUser");
 const game = document.getElementById("game");
 const charts = document.getElementById("charts");
+let refresh = document.getElementById("refresh");
 const linkMedals = [
   "https://static.wikia.nocookie.net/espokemon/images/3/39/Medalla_Roca.png",
   "https://static.wikia.nocookie.net/espokemon/images/6/60/Medalla_Cascada.png",
@@ -28,6 +29,10 @@ const linkMedals = [
 let currentQuestionIndex = 0;
 let arrPokemonQuestion = [];
 let player = "";
+
+refresh.addEventListener("click", () => {
+  location.reload();
+});
 
 const number = () => {
   let number = Math.floor(Math.random() * 151 + 1);
@@ -163,7 +168,9 @@ const endGame = () => {
   startButton.innerText = "Restart";
   pictures.innerHTML = "";
   startButton.classList.remove("d-none");
+  refresh.classList.remove("d-none");
   startButton.setAttribute("disabled", "");
+  refresh.setAttribute("disabled", "");
   cargarPuntaje();
 
   updateCharts(myChart);
@@ -171,6 +178,7 @@ const endGame = () => {
     answerButtonsElement.classList.add("d-none");
     quest.classList.add("d-none");
     startButton.removeAttribute("disabled", "");
+    refresh.removeAttribute("disabled", "");
     medals.classList.add("d-none");
     charts.classList.remove("d-none");
   }, 3000);
@@ -296,6 +304,7 @@ const startGame = (player) => {
 };
 const resetState = () => {
   nextButton.classList.add("d-none");
+  refresh.classList.add("d-none");
   formUser.classList.add("d-none");
   charts.classList.add("d-none");
   startButton.classList.add("d-none");
@@ -379,5 +388,9 @@ const printUsers = () => {
   });
 };
 printUsers();
+console.log(document.getElementById("myChart").getAttribute("width"));
 btnCreateUser.addEventListener("click", createUserOrSelect);
 charts.classList.add("d-none");
+if (document.getElementById("myChart").getAttribute("width") == 0) {
+  location.reload()
+}//Solucion al bug del chart. Que se actualice la pagina cuando no se cargue
