@@ -6,19 +6,32 @@ Pokemasters Quiz Game is a quiz game based on Pokémon, where players must ident
 
 ## Imagenes
 Choose User:
-![Choose User](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/5792a9c7-7d09-4187-abbd-fdae326665d5)
+![Choose User](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/efe3e041-6c12-4d9f-a946-2623ea5edeb8)
+
+
 Creating User:
-![Creating User](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/e305e6b8-e927-46b7-8104-2ee788a7ff39)
+![Creating User](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/61090c37-fea5-430f-9250-d97fed9dcd94)
+
+
 Game-Start:
-![Game-Start](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/a982053a-21a6-49ef-8cab-dd45135d58d8)
+![Game-Start](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/5b7ac8b1-86d5-49b0-9839-db13f512f0b8)
+
+
 Wright Answer:
-![Wright Answer](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/93468cb6-a542-4962-8872-ce9e2e3b2a69)
+![Wright Answer](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/9e2c6ff6-1c0a-4072-8852-6ffd76292e20)
+
+
 Wrong Answer:
-![Wrong Answer](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/557fec24-e8e5-4341-af82-6dd45505af9f)
+![Wrong Answer](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/0c2d94b7-8e41-4492-bb3d-baec86e8cd4c)
+
+
 End-game:
-![End-game](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/b8a3e31f-efa6-4499-846e-1b5ea5870203)
+![End-game](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/da5115bc-099b-43a5-a725-769ce8e6ff57)
+
+
 Chart of players´s score:
-![Chart of players](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/1efa490a-8e90-40f2-9541-4b913a4aa781)
+![Chart of players](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/c07c5c5c-0914-44cf-a3b3-6ca8575c1d2e)
+
 
 ## Features
 
