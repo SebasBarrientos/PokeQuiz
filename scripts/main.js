@@ -30,10 +30,6 @@ let currentQuestionIndex = 0;
 let arrPokemonQuestion = [];
 let player = "";
 
-refresh.addEventListener("click", () => {
-  location.reload();
-});
-
 const number = () => {
   let number = Math.floor(Math.random() * 151 + 1);
   return number;
@@ -83,6 +79,7 @@ const config = {
   type: "bar",
   data: data,
   options: {
+    responsive: true,
     scales: {
       x: {
         ticks: {
@@ -325,14 +322,6 @@ function setNextQuestion() {
   pokemonCorrect(pokemones, arrPokemonQuestion);
 }
 
-startButton.addEventListener("click", () => {
-  startGame(player);
-});
-nextButton.addEventListener("click", () => {
-  currentQuestionIndex++;
-  setNextQuestion();
-});
-
 const createUserOrSelect = () => {
   if (
     userName.value === undefined ||
@@ -388,6 +377,17 @@ const printUsers = () => {
   });
 };
 printUsers();
+startButton.addEventListener("click", () => {
+  startGame(player);
+});
+nextButton.addEventListener("click", () => {
+  currentQuestionIndex++;
+  setNextQuestion();
+});
+refresh.addEventListener("click", () => {
+  location.reload();
+});
+
 btnCreateUser.addEventListener("click", createUserOrSelect);
 charts.classList.add("d-none");
 if (document.getElementById("myChart").getAttribute("width") == 0) {
