@@ -6,7 +6,7 @@ const pictures = document.getElementById("pictures");
 const medals = document.getElementById("medals");
 const quest = document.getElementById("quest");
 const meme = document.getElementById("meme");
-const userName = document.getElementById("nameUser");
+const username = document.getElementById("nameUser");
 const btnCreateUser = document.getElementById("btnCreateUsers");
 const btnUsers = document.getElementById("btnUsers");
 const btnDeleteUsers = document.getElementById("btnDeleteUsers");
@@ -34,16 +34,16 @@ const number = () => {
   let number = Math.floor(Math.random() * 151 + 1);
   return number;
 };
-let chainPokemones = [];
-let rtaCorrecta;
-let pokemones = [];
+let btnPokemons = [];
+let correctAns;
+let pokemons = [];
 
 let labels = [];
 let values = [];
 const chartLabelFilter = () => {
   let keys = Object.keys(localStorage);
   keys.forEach((key) => {
-    if (key != "Puntuacion") {
+    if (key != "punctuation") {
       labels.push(key);
     }
   });
@@ -51,7 +51,7 @@ const chartLabelFilter = () => {
 const averageScores = () => {
   let keys = Object.keys(localStorage);
   keys.forEach((key) => {
-    if (key != "Puntuacion") {
+    if (key != "punctuation") {
       let playerPunctuation = JSON.parse(localStorage.getItem(key));
       if (playerPunctuation.score == "") {
         values.push(0);
@@ -154,10 +154,10 @@ const backGroundColorAns = (button) => {
     button.classList.add("bg-danger");
   }
 };
-const cargarPuntaje = () => {
-  let puntuacion = Number(localStorage.getItem("Puntuacion"));
+const scoreCharge = () => {
+  let punctuation = Number(localStorage.getItem("punctuation"));
   let playerPunctuation = JSON.parse(localStorage.getItem(player));
-  playerPunctuation.score.push(puntuacion);
+  playerPunctuation.score.push(punctuation);
   localStorage.setItem(player, JSON.stringify(playerPunctuation));
 };
 
@@ -168,7 +168,7 @@ const endGame = () => {
   refresh.classList.remove("d-none");
   startButton.setAttribute("disabled", "");
   refresh.setAttribute("disabled", "");
-  cargarPuntaje();
+  scoreCharge();
 
   updateCharts(myChart);
   setTimeout(() => {
@@ -185,15 +185,15 @@ const selectAnswer = (answerSelected) => {
     backGroundColorAns(button);
   });
   if (answerSelected != "") {
-    let puntuacion = Number(localStorage.getItem("Puntuacion"));
-    puntuacion += 1;
+    let punctuation = Number(localStorage.getItem("punctuation"));
+    punctuation += 1;
     document
       .getElementById(`img${currentQuestionIndex}`)
       .classList.remove("blackImage");
     document
       .getElementById(`medal${currentQuestionIndex}`)
       .classList.remove("blackImage");
-    localStorage.setItem("Puntuacion", puntuacion);
+    localStorage.setItem("punctuation", punctuation);
     if (arrPokemonQuestion.length > currentQuestionIndex + 1) {
       nextButton.classList.remove("d-none");
     } else {
@@ -214,14 +214,14 @@ const selectAnswer = (answerSelected) => {
     }
   }
 };
-const answersButtons = (chainPokemones, rtaCorrecta) => {
-  chainPokemones.forEach((pokebutton) => {
+const answersButtons = (btnPokemons, correctAns) => {
+  btnPokemons.forEach((pokebutton) => {
     const button = document.createElement("button");
     button.innerText = pokebutton.toUpperCase();
     button.classList.add("btn", "btn-warning", "m-1");
-    if (pokebutton == rtaCorrecta) {
+    if (pokebutton == correctAns) {
       button.dataset.correct = true;
-      button.id = "correcto";
+      button.id = "correct";
     }
     button.addEventListener("click", () => {
       selectAnswer(button.id);
@@ -230,27 +230,27 @@ const answersButtons = (chainPokemones, rtaCorrecta) => {
   });
 };
 
-const pokeFalse = (pokemones, numeroPokemon) => {
+const pokeFalse = (pokemons, numeroPokemon) => {
   let numberPokemonFalse = number();
   if (numeroPokemon == numberPokemonFalse) {
-    pokeFalse(pokemones, numeroPokemon);
+    pokeFalse(pokemons, numeroPokemon);
   } else {
-    let pokemonFalse = pokemones[numberPokemonFalse - 1].name;
-    chainPokemones.push(pokemonFalse);
-    if (chainPokemones.length < 3) {
-      pokeFalse(pokemones, numeroPokemon);
-    } else if (chainPokemones.length == 3) {
-      chainPokemones.sort();
-      answersButtons(chainPokemones, rtaCorrecta);
+    let pokemonFalse = pokemons[numberPokemonFalse - 1].name;
+    btnPokemons.push(pokemonFalse);
+    if (btnPokemons.length < 3) {
+      pokeFalse(pokemons, numeroPokemon);
+    } else if (btnPokemons.length == 3) {
+      btnPokemons.sort();
+      answersButtons(btnPokemons, correctAns);
     }
   }
 };
-const pokemonCorrect = (pokemones, arrPokemonQuestion) => {
+const pokemonCorrect = (pokemons, arrPokemonQuestion) => {
   let numeroPokemon = arrPokemonQuestion[currentQuestionIndex];
-  let pokemonCorrect = pokemones[numeroPokemon - 1].name;
-  chainPokemones.push(pokemonCorrect);
-  rtaCorrecta = pokemonCorrect;
-  pokeFalse(pokemones, numeroPokemon);
+  let pokemonCorrect = pokemons[numeroPokemon - 1].name;
+  btnPokemons.push(pokemonCorrect);
+  correctAns = pokemonCorrect;
+  pokeFalse(pokemons, numeroPokemon);
 };
 const imgCharge = (arrPokemonQuestion) => {
   imgID = 0;
@@ -266,13 +266,13 @@ const imgCharge = (arrPokemonQuestion) => {
   document.getElementById("img0").classList.remove("d-none");
 };
 
-const arrPokemonQuestionFiller = (pokemones) => {
+const arrPokemonQuestionFiller = (pokemons) => {
   if (arrPokemonQuestion.length < 10) {
     arrPokemonQuestion.push(number());
-    arrPokemonQuestionFiller(pokemones);
+    arrPokemonQuestionFiller(pokemons);
   } else {
     imgCharge(arrPokemonQuestion);
-    pokemonCorrect(pokemones, arrPokemonQuestion);
+    pokemonCorrect(pokemons, arrPokemonQuestion);
   }
 };
 
@@ -280,8 +280,8 @@ const gettingPokemons = () => {
   axios
     .get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=151`)
     .then((res) => {
-      pokemones = res.data.results;
-      arrPokemonQuestionFiller(pokemones);
+      pokemons = res.data.results;
+      arrPokemonQuestionFiller(pokemons);
     })
     .catch((err) => console.error(err));
 };
@@ -293,7 +293,7 @@ const startGame = (player) => {
   quest.classList.remove("d-none");
   answerButtonsElement.classList.remove("d-none");
   game.classList.remove("d-none");
-  localStorage.setItem("Puntuacion", "0");
+  localStorage.setItem("punctuation", "0");
   currentQuestionIndex = 0;
   arrPokemonQuestion = [];
   medals.innerHTML = "";
@@ -306,9 +306,9 @@ const resetState = () => {
   charts.classList.add("d-none");
   startButton.classList.add("d-none");
   answerButtonsElement.innerHTML = "";
-  chainPokemones = [];
+  btnPokemons = [];
 };
-const mostrarOcultarImgId = (currentQuestionIndex) => {
+const showHideImgId = (currentQuestionIndex) => {
   let lastImg = currentQuestionIndex - 1;
   document.getElementById(`img${lastImg}`).classList.add("d-none");
   document
@@ -318,26 +318,26 @@ const mostrarOcultarImgId = (currentQuestionIndex) => {
 
 function setNextQuestion() {
   resetState();
-  mostrarOcultarImgId(currentQuestionIndex);
-  pokemonCorrect(pokemones, arrPokemonQuestion);
+  showHideImgId(currentQuestionIndex);
+  pokemonCorrect(pokemons, arrPokemonQuestion);
 }
 
 const createUserOrSelect = () => {
   if (
-    userName.value === undefined ||
-    userName.value == "Puntuacion" ||
-    userName.value === ""
+    username.value === undefined ||
+    username.value == "punctuation" ||
+    username.value === ""
   ) {
-    alert("Tu usuario no se puede llamar Puntuacion ni estar vacio");
-  } else if (localStorage.getItem(userName.value) == null) {
+    alert("The user field can't be empty and the name 'punctuation' is not allowed");
+  } else if (localStorage.getItem(username.value) == null) {
     User = {
-      nameUser: userName.value,
+      nameUser: username.value,
       score: [],
     };
-    localStorage.setItem(userName.value, JSON.stringify(User));
-    startGame(userName.value);
+    localStorage.setItem(username.value, JSON.stringify(User));
+    startGame(username.value);
   } else {
-    startGame(userName.value);
+    startGame(username.value);
   }
 };
 
@@ -350,7 +350,7 @@ const deleteUser = (user) => {
 const printUsers = () => {
   let keys = Object.keys(localStorage);
   keys.forEach((key) => {
-    if (key != "Puntuacion") {
+    if (key != "punctuation") {
       const button = document.createElement("button");
       button.innerText = key.toUpperCase();
       button.classList.add(
@@ -366,7 +366,7 @@ const printUsers = () => {
     }
   });
   keys.forEach((key) => {
-    if (key != "Puntuacion") {
+    if (key != "punctuation") {
       const button = document.createElement("button");
       button.innerText = "Delete " + key.toUpperCase();
       button.classList.add("btn", "btn-danger", "m-1", "border", "border-dark");
@@ -392,4 +392,4 @@ btnCreateUser.addEventListener("click", createUserOrSelect);
 charts.classList.add("d-none");
 if (document.getElementById("myChart").getAttribute("width") == 0) {
   location.reload();
-} //Solucion al bug del chart. Que se actualice la pagina cuando no se cargue
+} 
