@@ -285,7 +285,7 @@ const gettingPokemons = () => {
     })
     .catch((err) => console.error(err));
 };
-const chargingPlayer = (playerr) => (player = playerr);
+const chargingPlayer = (selectedPlayer) => (player = selectedPlayer);
 
 const startGame = (player) => {
   chargingPlayer(player);
@@ -316,7 +316,7 @@ const showHideImgId = (currentQuestionIndex) => {
     .classList.remove("d-none");
 };
 
-function setNextQuestion() {
+const setNextQuestion =() =>{
   resetState();
   showHideImgId(currentQuestionIndex);
   pokemonCorrect(pokemons, arrPokemonQuestion);
@@ -330,11 +330,11 @@ const createUserOrSelect = () => {
   ) {
     alert("The user field can't be empty and the name 'punctuation' is not allowed");
   } else if (localStorage.getItem(username.value) == null) {
-    User = {
+    user = {
       nameUser: username.value,
       score: [],
     };
-    localStorage.setItem(username.value, JSON.stringify(User));
+    localStorage.setItem(username.value, JSON.stringify(user));
     startGame(username.value);
   } else {
     startGame(username.value);
