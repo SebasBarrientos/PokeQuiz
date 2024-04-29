@@ -20,7 +20,7 @@ Game-Start:
 
 
 
-Wright Answer:
+Right Answer:
 ![Captura de pantalla 2024-04-29 225401](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/7cd5dbf5-c06e-4be3-9bbe-fc6f4d36068b)
 
 
@@ -30,12 +30,12 @@ Wrong Answer:
 
 
 
-End-game:
+End-Game:
 ![Captura de pantalla 2024-04-29 225527](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/a0157993-aaa8-47d1-9239-9d1d3a0d7547)
 
 
 
-Chart of players´s score:
+Chart of players' score:
 ![Captura de pantalla 2024-04-29 225539](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/e9e25592-dd9a-448e-b18b-5b4c4ac51145)
 
 
