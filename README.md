@@ -6,36 +6,42 @@ Pokemasters Quiz Game is a quiz game based on Pokémon, where players must ident
 
 ## Imagenes
 Choose User:
-![Choose User](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/efe3e041-6c12-4d9f-a946-2623ea5edeb8)
+![Captura de pantalla 2024-04-29 225322](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/c9163e62-3f55-4876-8288-5f7f17a6dc34)
+
 
 
 Creating User:
-![Creating User](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/61090c37-fea5-430f-9250-d97fed9dcd94)
+![Captura de pantalla 2024-04-29 225305](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/1babaec4-f733-40dc-9d7b-89f62fae79b1)
+
 
 
 Game-Start:
-![Game-Start](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/5b7ac8b1-86d5-49b0-9839-db13f512f0b8)
+![Captura de pantalla 2024-04-29 225344](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/8fe52b67-3c0b-48a0-8377-f97d654cdd1d)
+
 
 
 Wright Answer:
-![Wright Answer](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/9e2c6ff6-1c0a-4072-8852-6ffd76292e20)
+![Captura de pantalla 2024-04-29 225401](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/7cd5dbf5-c06e-4be3-9bbe-fc6f4d36068b)
+
 
 
 Wrong Answer:
-![Wrong Answer](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/0c2d94b7-8e41-4492-bb3d-baec86e8cd4c)
+![Captura de pantalla 2024-04-29 225422](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/ffbf9991-907f-4dae-8090-f03c9fdeaecb)
+
 
 
 End-game:
-![End-game](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/da5115bc-099b-43a5-a725-769ce8e6ff57)
+![Captura de pantalla 2024-04-29 225527](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/a0157993-aaa8-47d1-9239-9d1d3a0d7547)
+
 
 
 Chart of players´s score:
-![Chart of players](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/c07c5c5c-0914-44cf-a3b3-6ca8575c1d2e)
+![Captura de pantalla 2024-04-29 225539](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/e9e25592-dd9a-448e-b18b-5b4c4ac51145)
 
 
 ## Features
 
-- The page is an Single Page Aplication (SPA).
+- The page is a Single Page Aplication (SPA).
 - Uses the Pokeapi API to fetch Pokémon data.
 - Stores players' scores in the browser's local storage.
 - Displays Pokémon images and corresponding medals for questions.
@@ -44,10 +50,11 @@ Chart of players´s score:
 
 ## Usage Instructions
 
-1. **Starting the Game**: Choose an existing user from the button options or type your user and click submit.
-2. **Selecting Answers**: Multiple answer options are presented. The player must select the correct option to answer who´s that pokemon.
-3. **Game End**: The game ends after answering 10 questions. The score obtained is displayed with a badge box (for each correct answer you get a badge), and the score average chart is updated.
-4. **Restarting the Game**: To play again, simply press the "Restart" button.
+1.**Download the game**: Download the repositorie and run the Index file to start the game in your browser.
+2. **Starting the Game**: Choose an existing user from the button options or type your user and click submit.
+3. **Selecting Answers**: Multiple answer options are presented. The player must select the correct option to answer who´s that pokemon.
+4. **Game End**: The game ends after answering 10 questions. The score obtained is displayed with a badge box (for each correct answer you get a badge), and the score average chart is updated.
+5. **Restarting the Game**: To play again, simply press the "Restart" button.
 
 ## Requirements
 
@@ -72,19 +79,25 @@ Este es un juego de preguntas y respuestas sobre Pokémon, donde los jugadores d
 
 ## Imagenes
 Elegir usuario:
-![Choose User](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/5792a9c7-7d09-4187-abbd-fdae326665d5)
+![Captura de pantalla 2024-04-29 225322](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/e79511ee-0803-4565-940c-3c005b4e046e)
+
 Crear usuario:
-![Creating User](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/e305e6b8-e927-46b7-8104-2ee788a7ff39)
+![Captura de pantalla 2024-04-29 225305](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/f0b18e95-1321-4b9f-a59a-72aac71cd430)
+
 Comienza juego:
-![Game-Start](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/a982053a-21a6-49ef-8cab-dd45135d58d8)
+![Captura de pantalla 2024-04-29 225344](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/e8dec0bd-46c4-4312-91d3-ea6202e55e64)
+
 Respuesta correcta:
-![Wright Answer](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/93468cb6-a542-4962-8872-ce9e2e3b2a69)
+![Captura de pantalla 2024-04-29 225401](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/ffc7e34a-328a-49c1-af19-d6ad528f05e6)
+
 Respuesta incorrecta:
-![Wrong Answer](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/557fec24-e8e5-4341-af82-6dd45505af9f)
+![Captura de pantalla 2024-04-29 225422](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/9ede4cf4-42bf-410d-bfdd-dcfd2ec529be)
+
 Fin del juego:
-![End-game](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/b8a3e31f-efa6-4499-846e-1b5ea5870203)
+![Captura de pantalla 2024-04-29 225527](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/3b562590-5f79-4b39-82e6-fc1a54a898c2)
+
 Gráfico de puntuación de los jugadores:
-![Chart of players](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/1efa490a-8e90-40f2-9541-4b913a4aa781)
+![Captura de pantalla 2024-04-29 225539](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/90419267-281c-43ec-acaa-5c50d3b22872)
 
 
 ## Características
@@ -98,10 +111,11 @@ Gráfico de puntuación de los jugadores:
 
 ## Instrucciones de Uso
 
-1. **Inicio del Juego**: Selecciona tu usuario para comenzar el Quiz. Si ya jugaste antes puedes tocar el boton con tu nombre de usuario para comenzar, sino completa el campo y toca Submit.
-2. **Selección de Respuestas**: Se presentan 3 opciones de respuesta en botones. El jugador debe seleccionar la opción correcta.
-3. **Fin del Juego**: El juego termina después de responder 10 preguntas. Se muestra la puntuación obtenida (la puntuacion son las medallas) y se actualiza el gráfico de promedios de puntuación de jugadores.
-4. **Reinicio del Juego**: Para volver a jugar, simplemente presiona el botón "Restart".
+1. **Descarga el Juego**: Descarga el repositorio en tu ordenador y ejecuta el archivo index.html para empezar a jugar en tu navegador.
+2. **Inicio del Juego**: Selecciona tu usuario para comenzar el Quiz. Si ya jugaste antes puedes tocar el boton con tu nombre de usuario para comenzar, sino completa el campo y toca Submit.
+3. **Selección de Respuestas**: Se presentan 3 opciones de respuesta en botones. El jugador debe seleccionar la opción correcta.
+4. **Fin del Juego**: El juego termina después de responder 10 preguntas. Se muestra la puntuación obtenida (la puntuacion son las medallas) y se actualiza el gráfico de promedios de puntuación de jugadores.
+5. **Reinicio del Juego**: Para volver a jugar, simplemente presiona el botón "Restart".
 
 ## Requisitos
 
