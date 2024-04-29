@@ -6,7 +6,7 @@ Pokemasters Quiz Game is a quiz game based on Pokémon, where players must ident
 
 ## Imagenes
 Choose User:
-![Captura de pantalla 2024-04-29 225322](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/c9163e62-3f55-4876-8288-5f7f17a6dc34)
+![Captura de pantalla 2024-04-29 230852](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/13f9015f-f957-47a3-a553-cadd3568b643)
 
 
 
@@ -79,7 +79,7 @@ Este es un juego de preguntas y respuestas sobre Pokémon, donde los jugadores d
 
 ## Imagenes
 Elegir usuario:
-![Captura de pantalla 2024-04-29 225322](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/e79511ee-0803-4565-940c-3c005b4e046e)
+![image](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/01a66bc9-9f31-450e-9d59-db8352e7e7d7)
 
 Crear usuario:
 ![Captura de pantalla 2024-04-29 225305](https://github.com/SebasBarrientos/PokeQuiz/assets/117609894/f0b18e95-1321-4b9f-a59a-72aac71cd430)
